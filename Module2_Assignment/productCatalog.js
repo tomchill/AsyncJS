@@ -55,6 +55,13 @@
 	    document.getElementById("productText").innerHTML = outputString;
 	}
 
+	function clearExaminedText(){
+	    var outputString = "Product Id: ";
+	    outputString += "<br> Price: ";
+	    outputString += "<br> Type: ";
+	    document.getElementById("productText").innerHTML = outputString;
+	}
+
 	function getIntersection(arrA,arrB,searchedId){
 
 	    var samePrice = arrA;
@@ -86,6 +93,7 @@
 	function processSearchByType(searchType){
 	    api.searchProductsByType(searchType).then(function(val){
 	        var similarArray = val;
+	        clearExaminedText();
 	        updateTable('similarTable',similarArray);
 	    }).catch(function(val){
 	        alert(val);
@@ -95,6 +103,7 @@
 	function processSearchByPrice(searchPrice){
 	    api.searchProductsByPrice(searchPrice, 50).then(function(val){
 	        var similarArray = val;
+	        clearExaminedText();
 	        updateTable('similarTable',similarArray);
 	    }).catch(function(val){
 	        alert(val);
